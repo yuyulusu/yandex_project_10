@@ -1,4 +1,4 @@
-API_URl = 'https://adb12f62-e579-42c5-9c94-bb7568698c9a.serverhub.praktikum-services.ru/api/v1'
+API_URl = 'https://f2ffec7b-b163-4e5b-be81-24f3f18bf647.serverhub.praktikum-services.ru/api/v1'
 USERS_ENDPOINT = '/users'
 KITS_ENDPOINT = '/kits'
 
