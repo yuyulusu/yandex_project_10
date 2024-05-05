@@ -13,12 +13,12 @@ def main():
     token = get_new_user_token()
 
     # Minimal user data
-    minimal_kit_body = get_kit_body("Мой минимальный набор")
+    minimal_kit_body = get_kit_body("Набор с минимальными данными пользователя")
     minimal_kit_response = post_new_client_kit(minimal_kit_body, token)
     print(minimal_kit_response.json())
 
     # Full user data
-    full_kit_body = get_kit_body("Мой полный набор")
+    full_kit_body = get_kit_body("Набор с полными данными пользователя")
     full_kit_response = post_new_client_kit(full_kit_body, token)
     print(full_kit_response.json())
 
@@ -30,13 +30,13 @@ if __name__ == "__main__":
 import pytest
 from sender_stand_request import post_new_client_kit
 
-# Функция для проверки позитивных ожиданий (код ответа 201)
+# Функция для позитивных проверок (код ответа 201)
 def positive_assert(kit_body):
     response = post_new_client_kit(kit_body, "dummy_token")
     assert response.status_code == 201, f"Ожидается код ответа 201, получен {response.status_code}"
     assert response.json()["name"] == kit_body["name"], "Поле name в ответе не совпадает с переданным значением"
 
-# Функция для проверки негативных ожиданий (код ответа 400)
+# Функция для негативных проверок (код ответа 400)
 def negative_assert_code_400(kit_body):
     response = post_new_client_kit(kit_body, "dummy_token")
     assert response.status_code == 400, f"Ожидается код ответа 400, получен {response.status_code}"
