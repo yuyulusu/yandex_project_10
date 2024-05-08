@@ -2,9 +2,9 @@ from faker import Faker
 fake = Faker()
 
 user_data_min = {
-    "firstName": fake.first_name(),
-    "phone": fake.phone_number(),
-    "address": fake.address()
+    "firstName": "Анатолий",
+    "phone": "+79998887766",
+    "address": "г. Москва, ул. Пушкина, д. 10"
 }
 
 user_data_full = {
@@ -17,8 +17,4 @@ user_data_full = {
 
 kit_body_data = {
     "name": "a"
-}
-kit_data = {
-    "name": fake.name(),
-    "cardId": 7
 }
