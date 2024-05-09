@@ -10,7 +10,7 @@ def get_kit_body(name):
 
 
 def main():
-    token = get_new_user_token()
+    token = get_new_user_token(user_data_min)
 
     # Minimal user data
     minimal_kit_body = get_kit_body("Набор с минимальными данными пользователя")
@@ -32,13 +32,13 @@ from sender_stand_request import post_new_client_kit
 
 # Функция для позитивных проверок (код ответа 201)
 def positive_assert(kit_body):
-    response = post_new_client_kit(kit_body, "c465b1d3-7aaa-41f3-9a85-93d4aff106bc")
+    response = post_new_client_kit(kit_body, "c9ea147a-f81b-4ad7-99f6-f26a18e094e6")
     assert response.status_code == 201, f"Ожидается код ответа 201, получен {response.status_code}"
     assert response.json()["name"] == kit_body["name"], "Поле name в ответе не совпадает с переданным значением"
 
 # Функция для негативных проверок (код ответа 400)
 def negative_assert_code_400(kit_body):
-    response = post_new_client_kit(kit_body, "c465b1d3-7aaa-41f3-9a85-93d4aff106bc")
+    response = post_new_client_kit(kit_body, "")
     assert response.status_code == 400, f"Ожидается код ответа 400, получен {response.status_code}"
 
 # Тесты
