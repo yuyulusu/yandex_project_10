@@ -2,6 +2,7 @@ import requests
 from configuration import API_URl, USERS_ENDPOINT, KITS_ENDPOINT
 from data import user_data_min
 
+
 def post_new_client_kit(kit_body, auth_token):
     url = API_URl + KITS_ENDPOINT
     headers = {

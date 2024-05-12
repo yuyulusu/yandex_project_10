@@ -3,6 +3,7 @@ from data import user_data_min, user_data_full
 from sender_stand_request import post_new_client_kit, get_new_user_token
 
 
+
 def get_kit_body(name):
     return {
         "name": name
@@ -32,7 +33,8 @@ from sender_stand_request import post_new_client_kit
 
 # Функция для позитивных проверок (код ответа 201)
 def positive_assert(kit_body):
-    response = post_new_client_kit(kit_body, "c9ea147a-f81b-4ad7-99f6-f26a18e094e6")
+    token = get_new_user_token(user_data_min)
+    response = post_new_client_kit(kit_body, token)
     assert response.status_code == 201, f"Ожидается код ответа 201, получен {response.status_code}"
     assert response.json()["name"] == kit_body["name"], "Поле name в ответе не совпадает с переданным значением"
 
@@ -58,7 +60,7 @@ def negative_assert_code_400(kit_body):
     {"name": "Мария"},   # 6
 
     # Разрешены спецсимволы
-    {"name": "'№%@',"},    # 7
+    {"name": "\"№%@\","},    # 7
 
     # Разрешены пробелы
     {"name": " Человек и КО "},  # 8
